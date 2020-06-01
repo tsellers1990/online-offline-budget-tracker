@@ -1,7 +1,7 @@
-const CACHE_NAME = "my-site-cache-v1"; //might need to be var... I dont think it does though, reference me if it breaks
+var CACHE_NAME = "my-site-cache-v1"; //might need to be var... I dont think it does though, reference me if it breaks
 const DATA_CACHE_NAME = "data-cache-v1";
 
-const urlsToCache = [
+var urlsToCache = [
     "/",
     "/db.js",
     "/index.js",
@@ -13,9 +13,9 @@ const urlsToCache = [
 
 self.addEventListener("install", function(event) {
     event.waitUntil(
-        caches.open(CACHE_NAME).then(function(event) {
+        caches.open(CACHE_NAME).then(function(cache) {
             console.log("Opened Cache");
-            return caches.addAll(urlsToCache);
+            return cache.addAll(urlsToCache);
         })
     );
 });
